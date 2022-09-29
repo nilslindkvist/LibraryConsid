@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/JQuery.js"></script>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <header class ="background">
+    <nav>
+        <div class ="row">
+            <ul class= "main-nav hidden">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="categories.html">Back</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <div class="main-body" id="editCategoryForm">
+        <p>ID</p>
+        <p id="id"></p><br>
+        <label for="category">Category</label>
+        <input type="text" id="category"><br><br>
+        <button id="editCategory">Edit</button>
+        <button id="deleteCategory">Delete</button>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $('#editCategory').click(function(){
+            updateCategory(getInput());
+        })
+        $('#deleteCategory').click(function(){
+            deleteCategory(getInput());
+        })
+    })
+
+    function populateCategoryFields(category) {
+        console.log(category);
+        let id = document.getElementById("id");
+        let name = document.getElementById("category");
+        id.textContent = category.id;
+        name.value = category.categoryName;
+        console.log(id.textContent + name.textContent);
+    }
+
+    function getInput() {
+        let id = parseInt(document.getElementById("id").textContent, 10);
+        let categoryName = document.getElementById("category").value;
+
+        var object = 
+        {
+            "id" : id,
+            "categoryName" : categoryName
+        };
+
+        return object;
+    }
+</script>
+</html>

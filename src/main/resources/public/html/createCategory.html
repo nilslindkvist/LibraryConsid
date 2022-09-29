@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Category</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/JQuery.js"></script>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <header class ="background">
+    <nav>
+        <div class ="row">
+            <ul class= "main-nav hidden">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="categories.html">Back</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <form class="main-body" id="createCategoryForm">
+        <p id="id">ID</p>
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category"><br><br>
+        <button id="create">Create</button>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $('#create').click(function(){
+            createCategory(getInput());
+        })
+    })
+
+    function getInput() {
+        let id = parseInt(document.getElementById("id").textContent, 10);
+        let categoryName = document.getElementById("category").value;
+
+        var object = 
+        {
+            "id" : id,
+            "categoryName" : categoryName
+        };
+
+        return object;
+    }
+</script>
+</html>

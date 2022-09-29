@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Item</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/JQuery.js"></script>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <header class ="background">
+    <nav>
+        <div class ="row">
+            <ul class= "main-nav hidden">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="items.html">Back</a></li>
+                <li><a href="categories.html">Categories</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <div class="main-body" id="createItemForm">
+        <label for="category">Category</label>
+        <input type="number" id="category"><br><br>
+        <label for="title">Title</label>
+        <input type="text" id="title"><br><br>
+        <label for="author">Author</label>
+        <input type="text" id="author"><br><br>
+        <label for="pages">Pages</label>
+        <input type="number" id="pages"><br><br>
+        <label for="runtime">Runtime</label>
+        <input type="number" id="runtime"><br><br>
+        <label for="borrower">Borrower</label>
+        <input type="text" id="borrower"><br><br>
+        <label for="borrowDate">Borrow Date</label>
+        <input type="date" id="borrowDate"><br><br>
+        <label for="type">Type</label>
+        <input type="text" id="type"><br><br> 
+        <button id="create">Create</button>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $('#create').click(function(){
+            let object = getInput();
+            createItem(object);
+            console.log("Create item");
+            console.log(object);
+        })
+    })
+
+    function getInput() {
+        let category = parseInt(document.getElementById("category").value, 10);
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        if (!author) author = null;
+        let pages = parseInt(document.getElementById("pages").value, 10);
+        if (!pages) pages = 0;
+        let runtime = parseInt(document.getElementById("runtime").value, 10);
+        if (!runtime) runtime = 0;
+        let borrower = document.getElementById("borrower").value;
+        if (!borrower) borrower = null;
+        let borrowDate = document.getElementById("borrowDate").value;
+        if (!borrowDate) borrowDate = null;
+        let type = document.getElementById("type").value;
+
+        var object = 
+        {
+            "category" : {"id" : category},
+            "title" : title,
+            "author" : author,
+            "pages" : pages,
+            "runTimeMinutes" : runtime,
+            "borrower" : borrower,
+            "borrowDate" : borrowDate,
+            "type" : type
+        };
+        
+        return object;
+    }
+</script>
+</html>

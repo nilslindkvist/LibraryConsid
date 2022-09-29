@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/JQuery.js"></script>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <header class ="background">
+    <nav>
+        <div class ="row">
+            <ul class= "main-nav hidden">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="items.html">Back</a></li>
+                <li><a href="categories.html">Categories</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <div class="main-body" id="editItemForm">
+        <p>ID</p>
+        <p id="id"></p><br>
+        <label for="category">Category</label>
+        <input type="number" id="category"><br><br>
+        <label for="title">Title</label>
+        <input type="text" id="title"><br><br>
+        <label for="author">Author</label>
+        <input type="text" id="author"><br><br>
+        <label for="pages">Pages</label>
+        <input type="number" id="pages"><br><br>
+        <label for="runtime">Runtime</label>
+        <input type="number" id="runtime"><br><br>
+        <label for="borrower">Borrower</label>
+        <input type="text" id="borrower"><br><br>
+        <label for="borrowDate">Borrow Date</label>
+        <input type="date" id="borrowDate"><br><br>
+        <label for="type">Type</label>
+        <input type="text" id="type"><br><br>
+        <button id="editItem">Edit</button>
+        <button id="deleteItem">Delete</button>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $('#editItem').click(function(){
+            updateItem(getInput());
+        })
+        $('#deleteItem').click(function(){
+            deleteItem(getInput());
+        })
+    })
+
+    function populateItemFields(item) {
+        console.log(item);
+        let id = document.getElementById("id");
+        let x = document.getElementsByTagName("input");
+        //console.log(x.childNode);
+        id.textContent = item.id;
+        x[0].value = item.category.id;
+        x[1].value = item.title;
+        //x[2].value = item.author;
+        item.author == null ? x[2].value = "" : x[2].value = item.author;
+        //x[3].value = item.pages;
+        item.pages == null ? x[3].value = "" : x[3].value = item.pages;
+        //x[4].value = item.runTimeMinutes;
+        item.runTimeMinutes == null ? x[4].value = "" : x[4].value = item.runTimeMinutes;
+        //x[5].value = item.borrower;
+        item.borrower == null ? x[5].value = "" : x[5].value = item.borrower;
+        //x[6].value = item.borrowDate;
+        item.borrowDate == null ? x[6].value = "" : x[6].value = item.borrowDate;
+        x[7].value = item.type;
+    }
+
+    function getInput() {
+        let id = parseInt(document.getElementById("id").textContent, 10);
+        let category = parseInt(document.getElementById("category").value, 10);
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        if (!author) author = null;
+        let pages = parseInt(document.getElementById("pages").value, 10);
+        if (!pages) pages = 0;
+        let runtime = parseInt(document.getElementById("runtime").value, 10);
+        if (!runtime) runtime = 0;
+        let borrower = document.getElementById("borrower").value;
+        if (!borrower) borrower = null;
+        let borrowDate = document.getElementById("borrowDate").value;
+        if (!borrowDate) borrowDate = null;
+        let type = document.getElementById("type").value;
+
+        var object = 
+        {
+            "id" : id,
+            "category" : {"id" : category},
+            "title" : title,
+            "author" : author,
+            "pages" : pages,
+            "runTimeMinutes" : runtime,
+            "borrower" : borrower,
+            "borrowDate" : borrowDate,
+            "type" : type
+        };
+        console.log(object);
+        
+        return object;
+    }
+</script>
+</html>

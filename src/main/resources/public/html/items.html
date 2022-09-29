@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/JQuery.js"></script>
+    <script src="../js/sortTable.js"></script>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <header class ="background">
+    <nav>
+        <div class ="row">
+            <ul class= "main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="categories.html">Categories</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <div class="main-body">
+    <table class="table table-bordered table-sm" id="itemTable">
+        <tr>
+            <th class="row" onclick="sortTable(getElementById('itemTable'), 0)">Category</th>
+            <th class="row">Title</th>
+            <th class="row">Author</th>
+            <th class="row">Pages</th>
+            <th class="row">Runtime</th>
+            <th class="row">Borrower</th>
+            <th class="row">Borrow Date</th>
+            <th class="row" onclick="sortTable(getElementById('itemTable'), 7)">Type</th>
+        </tr>
+        <tbody id="itemTableBody">
+
+        </tbody>
+    </table><br><br>
+
+    <button onclick="location.href='createItem.html'" type="button">Create new Item</button>
+    </div> 
+</body>
+
+<script>
+    getAllItems();
+    const table = document.getElementById("itemTableBody");
+
+    itemTableBody.onclick = (e) => {
+        const target = e.target;
+        //const currentTarget = e.currentTarget;
+
+        let id = target.parentNode.id;
+        viewEditItem(id);
+        
+        
+        console.log(target.parentNode);
+        console.log(id);
+    };  
+
+/* 
+    const items = [
+        {"id":9,"categoryId":1,"title":"Live in Consert","pages":0,"runTimeMinutes":144,"isBorrowable":true,"type":"DVD"},
+        {"id":6,"categoryId":2,"title":"So Much Drama","author":"Peter Pan","pages":345,"runTimeMinutes":0,"isBorrowable":true,"type":"Book"},
+        {"id":7,"categoryId":2,"title":"So Much Drama","author":"Peter Pan","pages":345,"runTimeMinutes":0,"isBorrowable":true,"type":"Book"},
+        {"id":8,"categoryId":2,"title":"So Much Drama","author":"Peter Pan","pages":345,"runTimeMinutes":0,"isBorrowable":true,"type":"Book"},
+        {"id":11,"categoryId":3,"title":"The Skyfire Cycle","author":"D.C. Parlov","pages":875,"runTimeMinutes":0,"isBorrowable":true,"type":"Book"},
+        {"id":10,"categoryId":4,"title":"Plants in America","author":"Matt Lennon","pages":420,"runTimeMinutes":0,"isBorrowable":false,"type":"ReferenceBook"}
+    ];
+ */
+</script>
+</html>
